@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<link rel="icon" href="logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morse Signal Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Morse Signal Relay</h1>
+            <div class="status" id="connectionStatus">Connecting...</div>
+        </header>
+
+        <main>
+            <div class="game-area">
+                <div class="input-section">
+                    <h2>Send Signal</h2>
+                    <div class="morse-input">
+                        <button id="dotBtn" class="signal-btn dot">•</button>
+                        <button id="dashBtn" class="signal-btn dash">—</button>
+                        <button id="spaceBtn" class="signal-btn space">Space</button>
+                        <button id="clearBtn" class="clear-btn">Clear</button>
+                    </div>
+                    <div class="input-display" id="morseInput"></div>
+                    <div class="text-preview" id="textPreview"></div>
+                    <button id="sendBtn" class="send-btn">Send Message</button>
+                </div>
+
+                <div class="output-section">
+                    <h2>Received Signals</h2>
+                    <div class="messages" id="messagesList"></div>
+                </div>
+            </div>
+
+            <div class="players-section">
+                <h3>Connected Players</h3>
+                <div id="playersList"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

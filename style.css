@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
+html {
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABFklEQVRYR9WXURLDIAhE6/0PbSdOtUpcd1Gnpv1KGpTHBpCE1/cXq+vrMph7dGvXZTtpfW10DCA5jrH1H0Jhs5E0hnZdCR+vb5S8Nn8mQCeS9BdSalYJqMBjAGzq59xAESN7VFVUgV8AZB/dZBR7QTFDCqGquvUBVVoEtgIwpQRzmANSFHgWQKExHdIrPeuMvQNDarXe6nC/AutgV3JW+6bgqQLeV8FekRtgV+ToDKEKnACYKsfZjjkam7a0ZpYTytwmgainpC3HvwBocgKOxqRjehoR9DFKNFYtOwCGYCszobeCbl26N6yyQ6g8X/Wex/rBPsNEV6qAMaJPMynIHQCoSqS9JSMmwef51LflTgCRszU7DvAGiV6mHWfsaVUAAAAASUVORK5CYII=), auto;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+}
+
+body {
+    font-family: 'Press Start 2P', monospace;
+    /* background: linear-gradient(to bottom, #5ec8ff 0%, #f0a852 50%, #8b4513 100%); */
+    background: url(https://www.codedex.io/images/character_gifs/6wYeoCS.gif), url(https://www.codedex.io/images/character_gifs/battle.gif), url(bg.png);
+    background-size: auto, auto, cover;
+    background-position: right center,left center, center;
+    background-repeat:no-repeat, no-repeat, no-repeat;
+    image-rendering: pixelated;
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.8;
+
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    background: #FF6B35;
+    border: 4px solid #000000;
+    border-radius: 0;
+    padding: 20px;
+    box-shadow:
+        inset -4px -4px 0px #CC5529,
+        inset 4px 4px 0px #FF8A5C,
+        4px 4px 0px #000000;
+    position: relative;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: #FFD700;
+    border: 4px solid #000000;
+    z-index: -1;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-shadow:
+        2px 2px 0px #000000,
+        4px 4px 0px #CC5529;
+}
+
+.status {
+    padding: 8px 16px;
+    border-radius: 0;
+    background: #00AA00;
+    display: inline-block;
+    font-weight: normal;
+    font-size: 0.7rem;
+    border: 3px solid #000000;
+    transition: none;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #000000;
+    box-shadow:
+        inset -2px -2px 0px #008800,
+        inset 2px 2px 0px #00CC00,
+        2px 2px 0px #000000;
+}
+
+.status.connected {
+    background : #00AA00;
+    animation: powerUp 0.5s ease-out;
+}
+
+@keyframes powerup{
+    0%{
+        transform: scale(1);
+    }
+
+    50%{
+        transform: scale(1.2);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+.status.disconnected {
+    background: #FF4444;
+    box-shadow: inset -2px -2px 0px #CC2222,
+                inset 2px 2px 0px #FF6666,
+                2px 2px 0px #000000;
+                animation: powerDown 0.5s infinite;
+}
+
+@keyframes powerDown {
+    0%, 100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.game-area {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.input-section, .output-section {
+    background: #8B4513;
+    padding: 20px;
+    border-radius: 0;
+    border: 4px solid #000000;
+    box-shadow:
+        inset -4px -4px 0px #654321,
+        inset 4px 4px 0px #A0522D,
+        4px 4px 0px #000000;
+    transition: none;
+    position: relative;
+}
+
+.input-section::before,
+.output-section::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+    background: #228B22;
+    border: 4px solid #000000;
+    z-index: -1;
+}
+
+.input-section:hover,
+.output-section:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        inset -4px -4px 0px #654321,
+        inset 4px 4px 0px #A0522D,
+        6px 6px 0px #000000;
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #FFD700;
+    font-size: 1rem;
+    font-weight: normal;
+    text-shadow:
+        1px 1px 0px #000000,
+        2px 2px 0px #B8860B;
+    letter-spacing: 1px;
+}
+
+.morse-input {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.signal-btn {
+    padding: 12px 16px;
+    border: 3px solid #000000;
+    border-radius: 0;
+    font-size: 0.8rem;
+    font-weight: normal;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC), pointer;
+    transition: none;
+    font-family: 'Press Start 2P', monospace;
+    min-width: 80px;
+    color: #ffffff;
+    text-shadow: 1px 1px 0px #000000;
+}
+
+.signal-btn.dot {
+    background: #FF6B35;
+    box-shadow:
+        inset -3px -3px 0px #CC5529,
+        inset 3px 3px 0px #FF8A5C,
+        3px 3px 0px #000000;
+}
+
+.signal-btn.dot:hover {
+    background: #FF8A5C;
+    transform: translateY(-2px);
+    box-shadow:
+        inset -3px -3px 0px #CC5529,
+        inset 3px 3px 0px #FFAA7C,
+        5px 5px 0px #000000;
+}
+
+.signal-btn.dash {
+    background: #4169E1;
+    box-shadow:
+        inset -3px -3px 0px #2E4BC6,
+        inset 3px 3px 0px #6495ED,
+        3px 3px 0px #000000;
+}
+
+.signal-btn.dash:hover {
+    background: #6495ED;
+    transform: translateY(-2px);
+    box-shadow:
+        inset -3px -3px 0px #2E4BC6,
+        inset 3px 3px 0px #87CEEB,
+        5px 5px 0px #000000;
+}
+
+.signal-btn.space {
+    background: #FFD700;
+    color: #000000;
+    box-shadow:
+        inset -3px -3px 0px #B8860B,
+        inset 3px 3px 0px #FFFF99,
+        3px 3px 0px #000000;
+}
+
+.signal-btn.space:hover {
+    background: #FFFF99;
+    transform: translateY(-2px);
+    box-shadow:
+        inset -3px -3px 0px #B8860B,
+        inset 3px 3px 0px #FFFFCC,
+        5px 5px 0px #000000;
+}
+
+.signal-btn:active {
+    transform: translateY(1px);
+    box-shadow:
+        inset -2px -2px 0px rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.3),
+        1px 1px 0px #000000;
+}
+
+.clear-btn {
+    background: #DC143C;
+    color: #ffffff;
+    padding: 12px 16px;
+    border: 3px solid #000000;
+    border-radius: 0;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC),pointer;
+    font-family: 'Press Start 2P', monospace;
+    font-weight: normal;
+    font-size: 0.8rem;
+    transition: none;
+    text-shadow: 1px 1px 0px #000000;
+    box-shadow:
+        inset -3px -3px 0px #B22222,
+        inset 3px 3px 0px #FF6347,
+        3px 3px 0px #000000;
+}
+
+.clear-btn:hover {
+    background: #FF6347;
+    transform: translateY(-2px);
+    box-shadow:
+        inset -3px -3px 0px #B22222,
+        inset 3px 3px 0px #FF7F50,
+        5px 5px 0px #000000;
+}
+
+.clear-btn:active {
+    transform: translateY(1px);
+    box-shadow:
+        inset -2px -2px 0px rgba(0, 0, 0, 0.3),
+        inset 2px 2px 0px rgba(255, 255, 255, 0.3),
+        1px 1px 0px #000000;
+}
+
+.input-display {
+    background: #000000;
+    padding: 16px;
+    border-radius: 0;
+    min-height: 70px;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 16px;
+    word-break: break-all;
+    border: 4px solid #ffffff;
+    font-family: 'Press Start 2P', monospace;
+    color: #00FF00;
+    text-shadow: 0 0 5px #00FF00;
+    box-shadow:
+        inset 0 0 10px rgba(0, 255, 0, 0.3),
+        4px 4px 0px #808080;
+    animation: screenGlow 2s infinite alternate;
+}
+
+@keyframes screenGlow {
+    0% {
+        box-shadow: inset 0 0 10px #00ff004d, 4px 4px 0px #808080;
+    }
+
+    100% {
+        box-shadow: inset 0 0 20px #00ff0080, 4px 4px 0px #808080;
+    }
+}
+
+.text-preview {
+    background: #000080;
+    padding: 16px;
+    border-radius: 0;
+    min-height: 60px;
+    margin-bottom: 20px;
+    font-style: normal;
+    color: #FFFF00;
+    border: 3px solid #ffffff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.8rem;
+    text-shadow: 1px 1px 0px #000000;
+    box-shadow:
+        inset -2px -2px 0px #000040,
+        inset 2px 2px 0px #0000CC,
+        2px 2px 0px #000000;
+}
+
+.send-btn {
+    width: 100%;
+    padding: 16px;
+    background: #32CD32;
+    color: #ffffff;
+    border: 4px solid #000000;
+    border-radius: 0;
+    font-size: 0.9rem;
+    font-weight: normal;
+    cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC),pointer;
+    font-family: 'Press Start 2P', monospace;
+    transition: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 0px #000000;
+    box-shadow:
+        inset -4px -4px 0px #228B22,
+        inset 4px 4px 0px #90EE90,
+        4px 4px 0px #000000;
+    animation: pulse-green 1.5s infinite;
+}
+
+@keyframes pulse-green {
+
+    0%,
+    100% {
+        background: #32CD32;
+    }
+
+    50% {
+        background: #90EE90;
+    }
+}
+
+.send-btn:hover {
+    background: #90EE90;
+    transform: translateY(-3px);
+    box-shadow:
+        inset -4px -4px 0px #228B22,
+        inset 4px 4px 0px #98FB98,
+        6px 6px 0px #000000;
+}
+
+.send-btn:disabled {
+    background: #696969;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow:
+        inset -4px -4px 0px #2F2F2F,
+        inset 4px 4px 0px #A9A9A9,
+        4px 4px 0px #000000;
+    animation: none;
+    opacity: 0.7;
+}
+
+.messages {
+    max-height: 400px;
+    overflow-y: auto;
+    background: #2f3136;
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid #4f545c;
+}
+.messages:hover{
+    cursor:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC),pointer;
+}
+
+.messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.messages::-webkit-scrollbar-track {
+    background: #2f3136;
+}
+
+.messages::-webkit-scrollbar-thumb {
+    background: #4f545c;
+    border-radius: 4px;
+}
+
+.messages::-webkit-scrollbar-thumb:hover {
+    background: #5865f2;
+}
+
+.message {
+    margin-bottom: 16px;
+    padding: 12px;
+    background: #40444b;
+    border-radius: 8px;
+    border-left: 4px solid #5865f2;
+    transition: all 0.2s ease;
+}
+
+.message:hover {
+    background: #42464d;
+    transform: translateX(2px);
+}
+
+.message.own-message {
+    border-left-color: #3ba55c;
+    background: #3a3d42;
+}
+
+.message.own-message:hover {
+    background: #3e4147;
+}
+
+.message-header {
+    font-size: 0.85rem;
+    color: #b9bbbe;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.message-morse {
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 6px;
+    color: #5865f2;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+}
+
+.message-text {
+    font-size: 1rem;
+    color: #dcddde;
+    line-height: 1.4;
+}
+
+.players-section {
+    background: #36393f;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid #4f545c;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.players-section h3 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+#playersList {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+
+.player {
+    background: #3ba55c;
+    padding: 8px 16px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.player:hover {
+    box-shadow: 0 2px 8px rgba(59, 165, 92, 0.3);
+}
+
+.player.current-user {
+    background: #5865f2;
+    font-weight: 600;
+    box-shadow: 0 0 0 2px rgba(88, 101, 242, 0.3);
+}
+
+
+@media (max-width: 768px) {
+    .game-area {
+        grid-template-columns: 1fr;
+    }
+
+    .morse-input {
+        justify-content: center;
+    }
+
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    .container {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .morse-input {
+        flex-direction: column;
+    }
+
+    .signal-btn,
+    .clear-btn {
+        width: 100%;
+    }
+}
