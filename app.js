@@ -301,7 +301,7 @@ class Multiplayer {
 
     connect() {
         try {
-            this.socket = io(https://morse-signal-1.onrender.com/);
+            this.socket = io();
             this.bindSocketEvents();
         } catch (error) {
             console.error('Failed to connect:', error);
@@ -415,3 +415,4 @@ document.addEventListener('DOMContentLoaded', () => {
     window.multiplayer = multiplayer;
 
 });
+
